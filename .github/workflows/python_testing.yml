@@ -1,0 +1,27 @@
+# .github/workflows/python_testing.yml
+
+name: Run Quests Tests
+
+# Запускать этот скрипт при каждом push или pull_request
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Используем стандартный сервер Linux
+    
+    steps:
+    - uses: actions/checkout@v4 # 1. Клонируем код проекта
+
+    - name: Set up Python 3.x # 2. Устанавливаем Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x' 
+
+    - name: Run Quest 1 Tests # 3. Запускаем тесты для первого квеста
+      # Переходим в папку с тестами и запускаем тестовый файл
+      working-directory: 01_Basics_and_Loops/tests
+      run: python test_quest_1.py
