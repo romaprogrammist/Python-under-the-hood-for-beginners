@@ -22,6 +22,5 @@ jobs:
         python-version: '3.x' 
 
     - name: Run Quest 1 Tests # 3. Запускаем тесты для первого квеста
-      # Переходим в папку с тестами и запускаем тестовый файл
-      working-directory: 01_Basics_and_Loops/tests
-      run: python test_quest_1.py
+      # ВАЖНО: Удаляем working-directory и запускаем тест по полному пути из корня!
+      run: python 01_Basics_and_Loops/tests/test_quest_1.py
